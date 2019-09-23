@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <style>
+        .r1 {
+            background-color: green;
+        }
+
+        .t1 {
+            margin-left: 800px;
+            margin-top:0;
+        }
+        .f1{
+            padding-left: 10px;
+        }
+        
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+</head>
+
+<body>
+    <h1>Stock Manager</h1>
+        <div style="float: left">
+            <form class="f1">
+                Id<br/><br/>
+                <p id="id1">0</p>
+                Code<br/><br/>
+                <input type="text" id="code"><br /><br/>
+                Quantity<br/><br/>
+                <input type="text" id="price"><br /><br/>
+                Price<br/><br/>
+                <input type="text" id="unit_price"><br /><br/>
+                <button type="button" onclick="add_new_row()" >Add Row</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" onclick="modal1()" id="order">
+                    Place Order
+                  </button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#m2" onclick="modal2()" id="invoice">
+                    Invoice
+                  </button>
+                
+            </form>
+            </div>
+        
+        <div>
+            <table border="1" class="t1 table table-bordered" style="width:250px" id="t" align="center">
+                <tr class="r1">
+                    <td>
+                        ID
+                    </td>
+                    <td>Code</td>
+                    <td>Quantity</td>
+                    <td>Price</td>
+                    <td>Total price</td>
+                </tr>
+                <tr>
+                    <td id="i1"></td>
+                    <td id="co1"></td>
+                    <td id="p1"></td>
+                    <td id="u1"></td>
+                    <td id="t1"></td>
+                </tr>
+            </table>
+            </div>
+            <br/><br/>
+            <!-- Button trigger modal -->
+
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+           
+            <div class="modal-body">
+            <form>
+                Address:<br/>
+                <input type="text" id="a1" placeholder="Address Line 1"><br/>
+                <input type="text" id="a2" placeholder="Address Line 2"><br/>
+                <input type="text" id="a3" placeholder="Address Line 3"><br/>
+                zipcode:<br/>
+                <input type="text" id="z1" placeholder="Zipcode"><br/>  
+                Mobile#<br/>
+                <input type="text" id="m1" placeholder="Mobile"><br/>
+            </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" onclick="address()">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="m2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Invoice</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                  <div class="col-md-3">
+                    <h5>
+                        Address
+                    </h5>
+                    <p id = "addr1"></p>
+                    <h5>Phone #</h5>
+                    <p id = "phn1"></p>
+                  </div>
+                  <div class="col-md-9">
+                      <table border="1" id="t2">
+                          <tr class="r1">
+                              <td>ID</td>
+                              <td>Code</td>
+                              <td>Quantity</td>
+                              <td>Price</td>
+                              <td>Total Price</td>
+                          </tr>
+                          <tr id="t2">
+                            <td id="i2"></td>
+                            <td id="c2"></td>
+                            <td id="p2"></td>
+                            <td id="u2"></td>
+                            <td id="t2"></td>
+                        </tr>
+                      </table>
+                  </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>    
+            
+        
+</body>
+<script>
+    /*var id1=document.getElementById("id").value;
+    var code1=document.getElementById("code").value;
+    var price1=document.getElementById("price").value;
+    var up=document.getElementById("unit_price").value;*/
+    var sum = 0;
+        var id = 0;
+        var count =(function(){
+            return ++id;
+        })
+    function add_new_row()
+    {
+        var t=document.getElementById("t");
+        var r=t.insertRow();
+        var c1=r.insertCell(0);
+        var c2=r.insertCell(1);
+        var c3=r.insertCell(2);
+        var c4=r.insertCell(3);
+        var c5=r.insertCell(4);
+        var t2=document.getElementById("t2");
+        var r2=t2.insertRow();
+        var c12=r2.insertCell(0);
+        c22=r2.insertCell(1);
+        c32=r2.insertCell(2);
+        c42=r2.insertCell(3);
+        c52=r2.insertCell(4);
+        document.getElementById('id1').innerHTML = count();
+        c1.innerHTML=id;
+        c12.innerHTML=id;
+      c2.innerHTML=document.getElementById("code").value;
+      c3.innerHTML=document.getElementById("price").value;
+      c4.innerHTML=document.getElementById("unit_price").value;
+      c5.innerHTML=document.getElementById("price").value*document.getElementById("unit_price").value;
+      c22.innerHTML=document.getElementById("code").value;
+      c32.innerHTML=document.getElementById("price").value;
+      c42.innerHTML=document.getElementById("unit_price").value;
+      c52.innerHTML=document.getElementById("price").value*document.getElementById("unit_price").value;
+    }
+   /* function address(){
+        var l1=document.getElementById("a1").value;
+        var l2 =document.getElementById("a2").value;
+        var l3=document.getElementById("a3").value;
+        var z=document.getElementById("z1").value;
+        var m=document.getElementById("m1").value;
+        document.getElementById('addr1').innerHTML = line1 + " <br>" + line2 + " <br>" + line3 + " <br>";
+            document.getElementById('phn1').innerHTML = m;
+            
+    }*/
+    function modal1(){
+            document.getElementById('invoice').disabled = false;
+        }
+        function address(){
+            var line1 = document.getElementById('a1').value;
+            var line2 = document.getElementById('a2').value;
+            var line3 = document.getElementById('a3').value;
+            var phone1 = document.getElementById('m1').value;
+            document.getElementById('addr1').innerHTML = line1 + " <br>" + line2 + " <br>" + line3 + " <br>";
+            document.getElementById('phn1').innerHTML = phone1;
+            
+            
+            
+        }
+        /*function modal2(){
+            
+            var ta=document.getElementById("t2");
+        var r=ta.insertRow();
+        var c1=r.insertCell(0);
+        var c2=r.insertCell(1);
+        var c3=r.insertCell(2);
+        var c4=r.insertCell(3);
+        var c5=r.insertCell(4);
+        document.getElementById('id1').innerHTML = count();
+        c1.innerHTML=id;
+      c2.innerHTML=document.getElementById("code").value;
+      c3.innerHTML=document.getElementById("price").value+"<br/>";
+      c4.innerHTML=document.getElementById("unit_price").value+"<br/>";
+      c5.innerHTML=document.getElementById("price").value*document.getElementById("unit_price").value+"<br/>";
+        }*/
+    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+
+</script>
+</html>
